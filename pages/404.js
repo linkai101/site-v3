@@ -1,23 +1,31 @@
 import React from 'react';
 
 import {
-  Container,
+  Flex,
+  Box,
   Heading,
-  Code,
   Link,
   Button,
 } from '@chakra-ui/react';
 
 export default function Custom404() {
   return (
-    <Container 
-      maxW="container.md" p={8} pt={16}
-      align="center"
+    <Flex
+      minH="100vh"
+      align="center" justify="center"
     >
-      <Heading as="h1" size="xl" my={2}>404: Not found</Heading>
-      <Link href="/" style={{ textDecoration: "none" }}>
-        <Button mt={8}>Go home</Button>
-      </Link>
-    </Container>
+      <Box align="center">
+        <Heading size="md" fontWeight="normal">linkai wu</Heading>
+        <Heading as="h1" size="lg">four oh four: not found</Heading>
+        <Link href="/" style={{ textDecoration: "none" }}>
+          <Button mt={3} size="sm" fontWeight="normal">
+            {Math.floor(Math.random() * 100) === 69 ? 
+              "mom take me home im scared" 
+              : "take me home"
+            }
+          </Button>
+        </Link>
+      </Box>
+    </Flex>
   );
 }

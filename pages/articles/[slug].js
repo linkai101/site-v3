@@ -44,7 +44,7 @@ export default function ArticlePage({ params, source, matter }) {
           <Stack direction="row" mt={4}>
             <Tag size="md" borderRadius="full">
               <Avatar size="xs"
-                src="/assets/linkai.jpeg" name="Linkai Wu"
+                src="/assets/linkai.png" name="Linkai Wu"
                 ml={-1} mr={2}
               />
               <TagLabel>Linkai Wu</TagLabel>

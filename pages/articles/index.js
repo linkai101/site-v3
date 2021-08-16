@@ -3,7 +3,7 @@ import Head from 'next/head';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import config from '../../data/config';
-import { getArticlesPageData } from "../../lib/articles";
+import { getArticlesData } from "../../lib/articles";
 
 import {
   Container,
@@ -19,20 +19,15 @@ import Masonry from "react-masonry-css";
 
 export default function ArticleGridPage({ articlesData }) {
   const router = useRouter();
-  const [category, setCategory] = React.useState("");
+  const [filter, setFilter] = React.useState("");
 
+  // check query
   React.useEffect(() => {
-    checkQuery();
-  }, [router]);
-
-  function checkQuery() {
-    if (router.query?.category) {
-      if (!['career', 'projects', 'awards'].includes(router.query.category)) { // if is not a valid category
-        return router.push(`/articles`, undefined, { shallow: true });
-      }
-      setCategory(router.query.category);
+    if (router.query?.filter && !['career', 'projects', 'awards'].includes(router.query.filter)) { // if is not a valid filter
+      return router.push(`/articles`, undefined, { shallow: true });
     }
-  }
+    setFilter(router.query.filter || "");
+  }, [router]);
 
   return (
     <>
@@ -51,21 +46,17 @@ export default function ArticleGridPage({ articlesData }) {
         <Box py={4}>
           <Flex mb={4}>
             <Heading size="lg">
-              articles
+              {filter || "articles"}
               <Text as="span" ml={2} fontSize="2xl" fontWeight="normal">by linkai wu</Text>
             </Heading>
 
             <Flex flex={1} direction="column">
               <Box flex={1}/> {/* Filler div */}
-              {category &&
+              {filter &&
                 <Text align="right">
-                  filter:
-                  <Tag ml={2} colorScheme={
-                    category === 'career' ? 'orange'
-                    : category === 'projects' ? 'blue'
-                    : category === 'awards' ? 'yellow'
-                    : 'gray'
-                  }>{category}</Tag>
+                  <Link ml={1} color="blue.500" 
+                    onClick={() => router.push(`/articles`, undefined, { shallow: true })}
+                  >all articles</Link>
                 </Text>
               }
             </Flex>
@@ -81,7 +72,7 @@ export default function ArticleGridPage({ articlesData }) {
             className="masonry-grid"
             columnClassName="masonry-column"
           >
-            {articlesData.filter(a => filterArticles(a,category)).sort(sortArticles).map(article => 
+            {articlesData.filter(a => filterArticles(a,filter)).sort(sortArticles).map(article => 
               <Box key={article.slug}
                 p={4} position="relative"
                 bg={
@@ -92,12 +83,22 @@ export default function ArticleGridPage({ articlesData }) {
                 }
               >
                 <Heading size="lg">{article.emoji}</Heading>
-                <Heading size="md" mt={2}>{article.title}</Heading>
+                
+                <NextLink href={`/articles/${article.slug}`} passHref>
+                  <Link>
+                    <Heading size="md" mt={2}>{article.title}</Heading>
+                  </Link>
+                </NextLink>
+
                 <Text>
                   {article.description}
                 </Text>
                 <Text color="gray.500" fontSize="sm">
                   {article.date}
+                  &nbsp;|&nbsp;
+                  <NextLink href={`/articles/${article.slug}`} passHref>
+                    <Link fontSize="sm" color="blue.500">Read more</Link>
+                  </NextLink>
                 </Text>
 
                 {article.pinned && <Text as="span"
@@ -111,7 +112,6 @@ export default function ArticleGridPage({ articlesData }) {
     </>
   )
 }
-
 
 function sortArticles(a,b) { // sort order: 1-pinned first, 2-present first, 3-recent date first
   const date1 = new Date(a.sortDate);
@@ -128,13 +128,13 @@ function sortArticles(a,b) { // sort order: 1-pinned first, 2-present first, 3-r
   return (a.pinned ? -1 : 1); // pinned before unpinned
 }
 
-function filterArticles(a, category) {
-  if (!category) return true;
-  return a.category === category;
+function filterArticles(a, filter) {
+  if (!filter) return true;
+  return a.category === filter;
 }
 
 export async function getStaticProps() {
-  const articlesData = await getArticlesPageData();
+  const articlesData = await getArticlesData();
 
   return {
     props: {

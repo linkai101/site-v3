@@ -34,9 +34,7 @@ export default function Footer() {
           <Tooltip label={config.socials.email}>
             <Link href={`mailto:${config.socials.email}`}>email</Link>
           </Tooltip>
-          <Tooltip label="I don't have a LinkedIn yet!">
-            <Link>linkedin</Link>
-          </Tooltip>
+          {/*<Link>linkedin</Link>*/}
         </HStack>
       </Flex>
     </Container>

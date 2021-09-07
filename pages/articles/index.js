@@ -23,7 +23,7 @@ export default function ArticleGridPage({ articlesData }) {
 
   // check query
   React.useEffect(() => {
-    if (router.query?.filter && ![config.categories.map(c => c.slug)].includes(router.query.filter)) { // if is not a valid filter
+    if (router.query?.filter && !config.categories.map(c => c.slug).includes(router.query.filter)) { // if is not a valid filter
       return router.push(`/articles`, undefined, { shallow: true });
     }
     setFilter(router.query.filter || "");

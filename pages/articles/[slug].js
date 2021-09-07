@@ -22,6 +22,10 @@ import {
 } from '@chakra-ui/react';
 
 export default function ArticlePage({ params, source, matter }) {
+  const category = matter.category && config.categories.filter(c => {
+    return matter.category === c.slug;
+  })[0];
+
   return (
     <>
       <Head>
@@ -52,10 +56,9 @@ export default function ArticlePage({ params, source, matter }) {
 
             {matter.date && <Tag size="md" borderRadius="full">📅 {matter.date}</Tag>}
 
-            {matter.category && (matter.category === 'career' ? <Tag size="md" borderRadius="full" colorScheme="orange">💼 Career</Tag>
-            : matter.category === 'projects' ? <Tag size="md" borderRadius="full" colorScheme="blue">📝 Projects</Tag>
-            : matter.category === 'awards' ? <Tag size="md" borderRadius="full" colorScheme="yellow">🏆 Awards</Tag>
-            : <Tag size="md" borderRadius="full">{matter.category}</Tag>)}
+            {category && <Tag size="md" borderRadius="full" colorScheme={category.colorScheme}>{category.emoji} {category.name}</Tag>
+              || <Tag size="md" borderRadius="full">{matter.category}</Tag>
+            }
           </Stack>
         </Box>
 

@@ -16,7 +16,7 @@ export default function Footer() {
     <Container maxW="container.xl" bg="gray.100" p={4}>
       <Flex direction={{ base: "column", md: "row" }}>
         <Text align={{ base: "center", md: "left" }} my={1}>
-          &copy; linkai wu
+          &copy; Linkai Wu
         </Text>
 
         <HStack flex={1} px={6} justify={{ base: "center", md: "flex-start" }} spacing={4} my={1}>
@@ -34,7 +34,7 @@ export default function Footer() {
           <Tooltip label={config.socials.email}>
             <Link href={`mailto:${config.socials.email}`}>email</Link>
           </Tooltip>
-          {/*<Link>linkedin</Link>*/}
+          {/*<Link>Linkedin</Link>*/}
         </HStack>
       </Flex>
     </Container>

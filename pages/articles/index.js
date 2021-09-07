@@ -23,7 +23,7 @@ export default function ArticleGridPage({ articlesData }) {
 
   // check query
   React.useEffect(() => {
-    if (router.query?.filter && !['career', 'projects', 'awards'].includes(router.query.filter)) { // if is not a valid filter
+    if (router.query?.filter && ![config.categories.map(c => c.slug)].includes(router.query.filter)) { // if is not a valid filter
       return router.push(`/articles`, undefined, { shallow: true });
     }
     setFilter(router.query.filter || "");
@@ -47,7 +47,7 @@ export default function ArticleGridPage({ articlesData }) {
           <Flex mb={4}>
             <Heading size="lg">
               {filter || "articles"}
-              <Text as="span" ml={2} fontSize="2xl" fontWeight="normal">by linkai wu</Text>
+              <Text as="span" ml={2} fontSize="2xl" fontWeight="normal">by Linkai Wu</Text>
             </Heading>
 
             <Flex flex={1} direction="column">
@@ -76,10 +76,9 @@ export default function ArticleGridPage({ articlesData }) {
               <Box key={article.slug}
                 p={4} position="relative"
                 bg={
-                  article.category === 'career' ? 'orange.100'
-                  : article.category === 'projects' ? 'blue.100'
-                  : article.category === 'awards' ? 'yellow.100'
-                  : 'gray.100'
+                  config.categories.filter(c => {
+                    return article.category === c.slug;
+                  })[0]?.color || 'gray.100'
                 }
               >
                 <Heading size="lg">{article.emoji}</Heading>

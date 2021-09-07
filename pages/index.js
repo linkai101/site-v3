@@ -29,18 +29,18 @@ export default function Home({ articlesData }) {
       <Container maxW="container.lg" p={8}>
         <Flex py={{ base: 0, md: 6 }} direction={{ base: "column", md: "row" }}>
           <Box flex={2}>
-            <Heading as="h1" size="xl">linkai wu</Heading>
-            <Text fontSize="lg">high school student ~ fullstack developer</Text>
+            <Heading as="h1" size="xl">Linkai Wu</Heading>
+            <Text fontSize="lg">High school student ~ fullstack developer</Text>
           </Box>
 
           <Flex flex={3} direction="column">
             <Box flex={1}/> {/* Filler div */}
             <HStack spacing={3} justify="flex-end">
-              <Link href={config.socials.github} isExternal>github</Link>
+              <Link href={config.socials.github} isExternal color="blue.500">github</Link>
               <Tooltip label={config.socials.email}>
-                <Link href={`mailto:${config.socials.email}`}>email</Link>
+                <Link href={`mailto:${config.socials.email}`} color="blue.500">email</Link>
               </Tooltip>
-              {/*<Link>linkedin</Link>*/}
+              {/*<Link>Linkedin</Link>*/}
             </HStack>
           </Flex>
         </Flex>
@@ -48,7 +48,7 @@ export default function Home({ articlesData }) {
         <Flex py={4} direction={{ base: 'column-reverse', md: 'row' }}>
           <Box flex={2}>
             <Heading size="md">
-              about me
+              About Me
             </Heading>
 
             <Text mt={2}>
@@ -76,11 +76,7 @@ export default function Home({ articlesData }) {
           </Flex>
         </Flex>
         
-        <Box py={4}>
-          <Heading size="md" mb={2}>
-            some stuff i'm working on
-          </Heading>
-
+        <Box py={6}>
           <Masonry
             breakpointCols={{
               default: 3,
@@ -95,10 +91,9 @@ export default function Home({ articlesData }) {
               <Box key={article.slug}
                 p={4} position="relative"
                 bg={
-                  article.category === 'career' ? 'orange.100'
-                  : article.category === 'projects' ? 'blue.100'
-                  : article.category === 'awards' ? 'yellow.100'
-                  : 'gray.100'
+                  config.categories.filter(c => {
+                    return article.category === c.slug;
+                  })[0]?.color || 'gray.100'
                 }
               >
                 <Heading size="lg">{article.emoji}</Heading>
@@ -122,29 +117,17 @@ export default function Home({ articlesData }) {
               </Box>
             )}
           </Masonry>
-        </Box>
-        
-        <Box py={4}>
-          <Heading size="md" mb={2}>
-            see all
-          </Heading>
           
           <HStack>
             <NextLink href="/articles" passHref>
-              <Link><Tag size="lg">all articles</Tag></Link>
+              <Link><Tag size="lg">see all</Tag></Link>
             </NextLink>
-
-            <NextLink href="/articles?filter=career" passHref>
-              <Link><Tag size="lg" colorScheme="orange">career</Tag></Link>
-            </NextLink>
-
-            <NextLink href="/articles?filter=projects" passHref>
-              <Link><Tag size="lg" colorScheme="blue">projects</Tag></Link>
-            </NextLink>
-
-            <NextLink href="/articles?filter=awards" passHref>
-              <Link><Tag size="lg" colorScheme="yellow">awards</Tag></Link>
-            </NextLink>
+            
+            {config.categories.map(c =>
+              <NextLink href={`/articles?filter=${c.slug}`} key={c.slug} passHref>
+                <Link><Tag size="lg" colorScheme={c.colorScheme}>{c.name.toLowerCase()}</Tag></Link>
+              </NextLink>
+            )}
           </HStack>
         </Box>
       </Container>

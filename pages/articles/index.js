@@ -37,8 +37,8 @@ export default function ArticleGridPage({ articlesData }) {
       <Head>
         <title>Articles{config.titleSuffix}</title>
         <meta property="og:title" content={`Articles${config.titleSuffix}`} key="ogtitle"/>
-        <meta name="description" content=""/>
-        <meta property="og:description" content="" key="ogdesc"/>
+        <meta name="description" content="All of my articles on my projects, activities, and more! 🗂"/>
+        <meta property="og:description" content="All of my articles on my projects, activities, and more! 🗂" key="ogdesc"/>
       </Head>
 
       <Container maxW="container.lg" p={8}>

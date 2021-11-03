@@ -2,6 +2,9 @@ import React from 'react';
 import Head from 'next/head';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
+
+
 import config from '../../data/config';
 import { getArticlesData } from "../../lib/articles";
 
@@ -52,13 +55,13 @@ export default function ArticleGridPage({ articlesData }) {
 
             <Flex flex={1} direction="column">
               <Box flex={1}/> {/* Filler div */}
-              {filter &&
+              {/*filter &&
                 <Text align="right">
                   <Link ml={1} color="blue.500" 
                     onClick={() => router.push(`/articles`, undefined, { shallow: true })}
                   >all articles</Link>
                 </Text>
-              }
+              */}
             </Flex>
           </Flex>
 
@@ -73,37 +76,32 @@ export default function ArticleGridPage({ articlesData }) {
             columnClassName="masonry-column"
           >
             {articlesData.filter(a => filterArticles(a,filter)).sort(sortArticles).map(article => 
-              <Box key={article.slug}
-                p={4} position="relative"
-                bg={
-                  config.categories.filter(c => {
-                    return article.category === c.slug;
-                  })[0]?.color || 'gray.100'
-                }
+              <motion.div
+                whileHover={{ scale: 1.05 }}
               >
-                <Heading size="lg">{article.emoji}</Heading>
-                
                 <NextLink href={`/articles/${article.slug}`} passHref>
-                  <Link>
-                    <Heading size="md" mt={2}>{article.title}</Heading>
+                  <Link style={{ textDecoration: "none" }}>
+                    <Box key={article.slug}
+                      p={4} position="relative"
+                      bg={
+                        config.categories.filter(c => {
+                          return article.category === c.slug;
+                        })[0]?.bg || 'gray.100'
+                      }
+                      borderRadius="xl"
+                    >
+                      <Heading size="lg">{article.emoji}</Heading>
+                      <Heading size="md" mt={2}>{article.title}</Heading>
+                      <Text>{article.description}</Text>
+                      <Text color="text.darkMuted" fontSize="sm">{article.date}</Text>
+
+                      {article.pinned && <Text as="span"
+                        position="absolute" top="12px" right="12px"
+                      >📌</Text>}
+                    </Box>
                   </Link>
                 </NextLink>
-
-                <Text>
-                  {article.description}
-                </Text>
-                <Text color="gray.500" fontSize="sm">
-                  {article.date}
-                  &nbsp;|&nbsp;
-                  <NextLink href={`/articles/${article.slug}`} passHref>
-                    <Link fontSize="sm" color="blue.500">Read more</Link>
-                  </NextLink>
-                </Text>
-
-                {article.pinned && <Text as="span"
-                  position="absolute" top="12px" right="12px"
-                >📌</Text>}
-              </Box>
+              </motion.div>
             )}
           </Masonry>
         </Box>

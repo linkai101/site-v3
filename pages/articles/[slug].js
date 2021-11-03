@@ -36,8 +36,8 @@ export default function ArticlePage({ params, source, matter }) {
       </Head>
 
       <Container maxW="container.lg" p={8}>
-        <NextLink href="/articles" passHref>
-          <Link color="blue.500">&#60; back to articles</Link>
+        <NextLink href="/" passHref>
+          <Link color="blue.500">&#60; back to homepage</Link>
         </NextLink>
 
         <Box py={4}>

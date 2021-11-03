@@ -69,9 +69,12 @@ export default function Home({ articlesData }) {
 
       <Container maxW="container.xl" p={8}>
         {config.categories.map(c =>
-        <Flex py={6}>
-          <Box w="256px" pl={4} pr={8} textAlign="right">
-            <Box py={4} pr={4} borderRightWidth="2px" borderRightColor="gray.300">
+        <Flex py={{ base:0, md:6 }} direction={{ base:"column", md:"row" }}>
+          <Box
+            w={{ base:"auto", md:"256px" }} pl={4} pr={{ base:4, md:8 }} pb={{ base:4, md:0 }}
+            textAlign={{ base: "left", md:"right" }}
+          >
+            <Box py={4} pr={4} borderRightWidth={{ base: 0, md:2 }} borderRightColor="gray.200">
               <Heading size="lg" color={c.color}>{c.name.toLowerCase()}</Heading>
               <Text mt={3} color="text.darkMuted">{c.description}</Text>
 

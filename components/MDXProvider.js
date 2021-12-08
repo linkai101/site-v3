@@ -16,6 +16,7 @@ import {
   Tr,
   Th,
   Td,
+  Button
 } from '@chakra-ui/react';
 
 import Blockquote from './Blockquote';
@@ -49,6 +50,8 @@ export default function MDXCompProvider(props) {
     hr: (props) => <Divider my={4} {...props}/>,
     a: (props) => <Link color="blue.500" href={props.url} title={props.title} {...props}/>,
     img: (props) => <Image my={4} {...props}/>,
+
+    Button: ({ href, ...rest }) => <Link href={href} style={{ textDecoration: "none" }} isExternal><Button {...rest}/></Link>,
   };
 
   return (

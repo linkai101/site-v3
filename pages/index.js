@@ -17,8 +17,11 @@ import {
   Tag,
   Link,
   Image,
+  useColorModeValue,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import Masonry from "react-masonry-css";
+import Emoji from '../components/Emoji';
 
 export default function Home({ articlesData }) {
   return (
@@ -28,7 +31,7 @@ export default function Home({ articlesData }) {
         <meta property="og:description" content="Hi! ✋ I'm Linkai Wu, a high school student from Maryland, USA." key="ogdesc"/>
       </Head>
 
-      <Box bg="bg.light2">
+      <Box bg={useColorModeValue("bg.light2", "bg.dark2")}>
         <Container maxW="container.lg">
           <Flex h={{ base:"auto", md:"40vh" }} minH={{ base:"auto", md:"300px" }} p={4} pt={{ base:12, md:"auto"}}
             align="center"
@@ -44,15 +47,23 @@ export default function Home({ articlesData }) {
               <Heading as="h1" size="2xl">
                 Linkai Wu
               </Heading>
-              <Text fontSize="xl" mt={1}>
-                <Link href="https://mbhs.edu" style={{ textDecoration: "none" }} isExternal>Studying</Link>
-                ,&nbsp;
-                <Link href={config.socials.github} style={{ textDecoration: "none" }} isExternal>sharing</Link>
-                , and&nbsp;
-                <Link href="https://blair.hackclub.com" style={{ textDecoration: "none" }} isExternal>hacking</Link>.
+
+              <HStack mt={2} justify={{ base:"center", md:"flex-start" }} spacing={3}>
+                <Tag borderRadius="full" variant="outline" fontWeight="semibold" boxShadow="0 0 0px 2px #718096">
+                  <Emoji symbol="📌" mr={1}/> dmv
+                </Tag>
+                <Link href="https://mbhs.edu" style={{ textDecoration: "none" }} isExternal>
+                  <Tag borderRadius="full" variant="outline" fontWeight="semibold" boxShadow="0 0 0px 2px #718096">
+                    {useBreakpointValue({ base: "Blair HS", sm: "Montgomery Blair HS" })}
+                  </Tag>
+                </Link>
+              </HStack>
+
+              <Text fontSize="xl" mt={4}>
+              ¯\_(ツ)_/¯ 
               </Text>
 
-              <HStack mt={4} justify={{ base:"center", md:"flex-start" }} spacing={3}>
+              <HStack mt={2} justify={{ base:"center", md:"flex-start" }} spacing={3}>
                 {Object.entries(config.socials).map(([key,value]) =>
                   key === 'email' ?
                     <Tooltip label={value} key={key}>
@@ -69,19 +80,19 @@ export default function Home({ articlesData }) {
 
       <Container maxW="container.xl" p={8}>
         {config.categories.map(c =>
-        <Flex py={{ base:0, md:6 }} direction={{ base:"column", md:"row" }}>
+        <Flex py={{ base:0, md:6 }} direction={{ base:"column", md:"row" }} key={c.slug}>
           <Box
             w={{ base:"auto", md:"256px" }} pl={4} pr={{ base:4, md:8 }} pb={{ base:4, md:0 }}
             textAlign={{ base: "left", md:"right" }}
           >
             <Box py={4} pr={4} borderRightWidth={{ base: 0, md:2 }} borderRightColor="gray.200">
               <Heading size="lg" color={c.color}>{c.name.toLowerCase()}</Heading>
-              <Text mt={3} color="text.darkMuted">{c.description}</Text>
+              <Text mt={3} color={useColorModeValue("text.darkMuted", "text.lightMuted")}>{c.description}</Text>
 
               <Box mt={4}>
                 <NextLink href={`/articles?filter=${c.slug}`} passHref>
                   <Link>
-                    <Tag size="md" fontWeight="semibold" colorScheme={c.colorScheme}>{c.emoji} see all</Tag>
+                    <Tag size="md" fontWeight="semibold" colorScheme={c.colorScheme}><Emoji symbol={c.emoji} mr={1}/> see all</Tag>
                   </Link>
                 </NextLink>
               </Box>
@@ -102,6 +113,7 @@ export default function Home({ articlesData }) {
               {articlesData.filter(a => filterArticles(a,c.slug)).sort(sortArticles).map(article => 
                 <motion.div
                   whileHover={{ scale: 1.05 }}
+                  key={article.slug}
                 >
                   <NextLink href={`/articles/${article.slug}`} passHref>
                     <Link style={{ textDecoration: "none" }}>
@@ -111,15 +123,16 @@ export default function Home({ articlesData }) {
                         bg={
                           config.categories.filter(c => {
                             return article.category === c.slug;
-                          })[0]?.bg || 'gray.100'
+                          })[0]?.bg[useColorModeValue('light', 'dark')]
+                          || useColorModeValue('gray.100', 'bg.dark2')
                         }
                       >
-                        <Heading size="lg">{article.emoji}</Heading>
+                        <Heading size="lg"><Emoji symbol={article.emoji}/></Heading>
                         <Heading size="md" mt={2}>{article.title}</Heading>
                         <Text>
                           {article.description}
                         </Text>
-                        <Text color="text.darkMuted" fontSize="sm">
+                        <Text color={useColorModeValue("text.darkMuted", "text.lightMuted")} fontSize="sm">
                           {article.date}
                         </Text>
                       </Box>

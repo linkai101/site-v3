@@ -17,8 +17,10 @@ import {
   Text,
   Tag,
   Link,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import Masonry from "react-masonry-css";
+import Emoji from '../../components/Emoji';
 
 export default function ArticleGridPage({ articlesData }) {
   const router = useRouter();
@@ -86,14 +88,14 @@ export default function ArticleGridPage({ articlesData }) {
                       bg={
                         config.categories.filter(c => {
                           return article.category === c.slug;
-                        })[0]?.bg || 'gray.100'
+                        })[0]?.bg[useColorModeValue('light', 'dark')] || 'gray.100'
                       }
                       borderRadius="xl"
                     >
-                      <Heading size="lg">{article.emoji}</Heading>
+                      <Heading size="lg"><Emoji symbol={article.emoji}/></Heading>
                       <Heading size="md" mt={2}>{article.title}</Heading>
                       <Text>{article.description}</Text>
-                      <Text color="text.darkMuted" fontSize="sm">{article.date}</Text>
+                      <Text color={useColorModeValue("text.darkMuted", "text.lightMuted")} fontSize="sm">{article.date}</Text>
 
                       {article.pinned && <Text as="span"
                         position="absolute" top="12px" right="12px"

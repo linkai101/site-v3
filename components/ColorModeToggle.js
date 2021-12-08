@@ -1,6 +1,7 @@
 import React from 'react';
 import { useColorMode, IconButton } from '@chakra-ui/react';
-import { SunIcon, MoonIcon } from '@chakra-ui/icons'
+import { SunIcon, MoonIcon } from '@chakra-ui/icons';
+import Emoji from './Emoji';
 
 export default function ColorModeToggle(props) {
   const { ...rest } = props;
@@ -8,7 +9,9 @@ export default function ColorModeToggle(props) {
 
   return (
     <IconButton
-      icon={colorMode === 'light' ? <SunIcon/> : <MoonIcon/>}
+      size="sm"
+      icon={colorMode === 'light' ? <Emoji symbol='☀️'/> : <Emoji symbol='🌙'/>}
+      colorScheme={colorMode === 'light' ? "gray" : "whiteAlpha"}
       onClick={toggleColorMode}
       {...rest}
     />

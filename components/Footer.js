@@ -9,7 +9,9 @@ import {
   Text,
   Tooltip,
   Link,
+  Button,
 } from '@chakra-ui/react';
+import ColorModeToggle from '../components/ColorModeToggle';
 
 export default function Footer() {
   return (
@@ -26,6 +28,8 @@ export default function Footer() {
         </HStack>*/}
 
         <HStack flex={1} px={6} justify={{ base:"center", md:"flex-end" }} spacing={4} my={1}>
+          <ColorModeToggle/>
+
           {Object.entries(config.socials).map(([key,value]) =>
             key === 'email' ?
               <Tooltip label={value} key={key}>

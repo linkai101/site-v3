@@ -15,7 +15,10 @@ export default {
       name: "Projects",
       emoji: "📝",
       color: "#6495ED",
-      bg: "#DEEDF0",
+      bg: {
+        light: "#DEEDF0",
+        dark: "#5584AC",
+      },
       colorScheme: "blue",
       description: "A few projects I’ve built/collabed on recently.",
     },
@@ -24,7 +27,10 @@ export default {
       name: "Activities",
       emoji: "🚀",
       color: "#FFAC1C",
-      bg: "#F8F0DF",
+      bg: {
+        light: "#F8F0DF",
+        dark: "#DE834D",
+      },
       colorScheme: "orange",
       description: "Organizations, clubs, and events I've worked on or with.",
     },
@@ -33,7 +39,10 @@ export default {
       name: "etc.",
       emoji: "🤷",
       color: "#50C878",
-      bg: "#E0ECE4",
+      bg: {
+        light: "#E0ECE4",
+        dark: "#5B8A72",
+      },
       colorScheme: "green",
       description: "",
     },*/

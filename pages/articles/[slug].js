@@ -19,7 +19,9 @@ import {
   Tag,
   TagLabel,
   Avatar,
+  useBreakpointValue,
 } from '@chakra-ui/react';
+import Emoji from '../../components/Emoji';
 
 export default function ArticlePage({ params, source, matter }) {
   const category = matter.category && config.categories.filter(c => {
@@ -42,11 +44,11 @@ export default function ArticlePage({ params, source, matter }) {
 
         <Box py={4}>
           <Heading as="h1" size="xl" mb={2}>
-            {matter.emoji} {matter.title}
+            <Emoji symbol={matter.emoji}/> {matter.title}
           </Heading>
 
           <Stack direction="row" mt={4}>
-            <Tag size="md" borderRadius="full">
+            <Tag size={useBreakpointValue({ base: "sm", md: "md" })} borderRadius="full">
               <Avatar size="xs"
                 src="/assets/linkai.png" name="Linkai Wu"
                 ml={-1} mr={2}
@@ -54,10 +56,20 @@ export default function ArticlePage({ params, source, matter }) {
               <TagLabel>Linkai Wu</TagLabel>
             </Tag>
 
-            {matter.date && <Tag size="md" borderRadius="full">📅 {matter.date}</Tag>}
+            {matter.date && 
+              <Tag size={useBreakpointValue({ base: "sm", md: "md" })} borderRadius="full">
+                📅 {matter.date}
+              </Tag>
+            }
 
-            {category && <Tag size="md" borderRadius="full" colorScheme={category.colorScheme}>{category.emoji} {category.name}</Tag>
-              || <Tag size="md" borderRadius="full">{matter.category}</Tag>
+            {category && 
+              <Tag size={useBreakpointValue({ base: "sm", md: "md" })} borderRadius="full" colorScheme={category.colorScheme}>
+                {category.emoji} {category.name}
+              </Tag>
+              ||
+              <Tag size="md" borderRadius="full">
+                {matter.category}
+              </Tag>
             }
           </Stack>
         </Box>

@@ -15,8 +15,8 @@ export default function Custom404() {
       align="center" justify="center"
     >
       <Box align="center">
-        <Heading size="md" fontWeight="normal">linkai wu</Heading>
-        <Heading as="h1" size="lg">four oh four: not found</Heading>
+        <Heading size="md" fontWeight="normal">Linkai Wu</Heading>
+        <Heading as="h1" size="lg">404: not found</Heading>
         <Link href="/" style={{ textDecoration: "none" }}>
           <Button mt={3} size="sm" fontWeight="normal">
             {Math.floor(Math.random() * 100) === 69 ? 

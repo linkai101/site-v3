@@ -22,7 +22,7 @@ import {
 import Blockquote from './Blockquote';
 import Codeblock from './Codeblock';
 
-export default function MDXCompProvider(props) {
+export default function MDXCompProvider(props:any) {
   const state = {
     p: (props) => <Text as="p" my={4} fontSize="lg" lineHeight={1.8} {...props} />,
     h1: (props) => <Heading as="h1" size="xl" mt={6} mb={4} {...props} />,

@@ -1,4 +1,3 @@
-  
 export default {
   siteName: "Linkai Wu",
   title: "Linkai Wu",

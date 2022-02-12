@@ -15,6 +15,18 @@ import {
   Avatar,
 } from '@chakra-ui/react';
 
+interface Props {
+  title: string;
+  description: string;
+  date?: string;
+  author?: {
+    name: string;
+    avatar: string;
+    url: string;
+  };
+  includeMeta?: boolean;
+}
+
 export default function Letterhead(props) {
   const {
     title,
@@ -23,7 +35,7 @@ export default function Letterhead(props) {
     author,
     includeMeta = true,
     ...rest
-  } = props;
+  }:Props = props;
 
   return (
     <>

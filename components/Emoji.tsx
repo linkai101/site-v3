@@ -4,7 +4,7 @@ import {
   Text
 } from '@chakra-ui/react';
 
-export default function Emoji({ symbol, label, ...rest }) {
+export default function Emoji({ symbol, label, ...rest }: { symbol: string; label?: string; [key: string]:any }) {
   return (
     <Text as="span"
       style={{ fontWeight:"normal" }}

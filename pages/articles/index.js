@@ -24,7 +24,7 @@ import Emoji from '../../components/Emoji';
 
 export default function ArticleGridPage({ articlesData }) {
   const router = useRouter();
-  const [filter, setFilter] = React.useState("");
+  const [filter, setFilter] = React.useState<string>("");
 
   // check query
   React.useEffect(() => {

@@ -11,13 +11,13 @@ import {
   Link,
   Button,
 } from '@chakra-ui/react';
-import ColorModeToggle from '../components/ColorModeToggle';
+import ColorModeToggle from './ColorModeToggle';
 
 export default function Footer() {
   return (
     <Container maxW="container.xl" p={4}>
-      <Flex direction={{ base: "column", md: "row" }}>
-        <Text align={{ base: "center", md: "left" }} my={1}>
+      <Flex direction="row" align="center">
+        <Text my={1}>
           (c) Linkai Wu
         </Text>
 
@@ -27,17 +27,17 @@ export default function Footer() {
           </NextLink>
         </HStack>*/}
 
-        <HStack flex={1} px={6} justify={{ base:"center", md:"flex-end" }} spacing={4} my={1}>
+        <HStack flex={1} px={6} justify="flex-end" align="right" spacing={4} my={1}>
           <ColorModeToggle/>
 
-          {Object.entries(config.socials).map(([key,value]) =>
+          {/*{Object.entries(config.socials).map(([key,value]) =>
             key === 'email' ?
               <Tooltip label={value} key={key}>
                 <Link href={`mailto:${value}`} color="theme.primary2">{key}</Link>
               </Tooltip>
             :
               <Link href={value} isExternal color="theme.primary2" key={key}>{key}</Link>
-          )}
+          )}*/}
         </HStack>
       </Flex>
     </Container>

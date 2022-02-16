@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import '../styles/masonry.css';
 import Head from 'next/head';
-import config from '../data/config';
+import config from '../content/config';
 import { ChakraProvider, Box } from "@chakra-ui/react";
 import theme from '../lib/theme';
 import MDXProvider from "../components/MDXProvider";

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 
 
-import config from '../../data/config';
+import config from '../../content/config';
 import { getArticlesData } from "../../lib/articles";
 
 import {

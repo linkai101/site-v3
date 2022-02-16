@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import NextLink from 'next/link';
-import config from '../../data/config';
+import config from '../../content/config';
 
 import matter from "gray-matter";
 import { MDXRemote } from 'next-mdx-remote';

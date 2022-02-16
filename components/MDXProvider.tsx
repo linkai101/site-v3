@@ -24,7 +24,7 @@ import Codeblock from './Codeblock';
 
 export default function MDXCompProvider(props:any) {
   const state = {
-    p: (props) => <Text as="p" my={4} fontSize="lg" lineHeight={1.8} {...props} />,
+    p: (props) => <Text as="p" my={4} /*lineHeight={1.8}*/ {...props} />,
     h1: (props) => <Heading as="h1" size="xl" mt={6} mb={4} {...props} />,
     h2: (props) => <Heading as="h2" size="lg" mt={6} mb={4} {...props} />,
     h3: (props) => <Heading as="h3" size="md" mt={6} mb={4} {...props} />,

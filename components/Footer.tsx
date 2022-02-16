@@ -1,6 +1,6 @@
 import React from 'react';
 import NextLink from 'next/link';
-import config from '../data/config';
+import config from '../content/config';
 
 import {
   Container,
@@ -27,9 +27,7 @@ export default function Footer() {
           </NextLink>
         </HStack>*/}
 
-        <HStack flex={1} px={6} justify="flex-end" align="right" spacing={4} my={1}>
-          <ColorModeToggle/>
-
+        <HStack flex={1} justify="flex-end" align="right" spacing={4} my={1}>
           {/*{Object.entries(config.socials).map(([key,value]) =>
             key === 'email' ?
               <Tooltip label={value} key={key}>

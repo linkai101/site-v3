@@ -129,6 +129,7 @@ export default function Home({ portfolio }) {
                     p={2} pt={(i !== 0) ? 8 : 0} position="relative"
                     size="sm"
                     textAlign="center"
+                    key={e.text}
                   >{e.text}</Heading>
                 );
             }

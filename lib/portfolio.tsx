@@ -32,6 +32,7 @@ export const getPortfolio = async (): Promise<Item[]> => {
     let date: string = (new Date(data.date?.split(' - ')[0])).toString();
     return {
       slug: s.replace(".mdx", ""),
+      href: data.href,
       ...data,
       content,
       date

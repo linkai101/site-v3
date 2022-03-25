@@ -62,11 +62,11 @@ export default function Home({ /* portfolio */ }) {
             />
 
             <Box flex={1} px={{ base: 4, md: 12 }} py={{ base: 2, md: 8 }}>
-              <Heading as="h1" size="2xl">
+              <Heading as="h1" size="2xl" textAlign={{ base:"center", xs:"left" }}>
                 Linkai Wu
               </Heading>
 
-              <Stack direction="row" mt={{ base:2, md:3 }} spacing={3}>
+              <Stack direction="row" mt={{ base:2, md:3 }} justify={{ base:"center", xs:"start" }} spacing={3}>
                 <Tag borderRadius="full" variant="outline" fontWeight="semibold" boxShadow="0 0 0px 2px #718096">
                   <Emoji symbol="📌" mr={1}/> dmv
                 </Tag>
@@ -79,7 +79,6 @@ export default function Home({ /* portfolio */ }) {
 
               {config.bio && <Text mt={4}>{config.bio}</Text>}
 
-              {/*
               <Stack direction="row" mt={4} spacing={3}>
                 {Object.entries(config.socials).map(([key,value]) =>
                   <Tooltip label={key} key={key}>
@@ -89,7 +88,6 @@ export default function Home({ /* portfolio */ }) {
                   </Tooltip>
                 )}
               </Stack>
-              */}
             </Box>
           </Flex>
         </Container>
@@ -108,22 +106,24 @@ export default function Home({ /* portfolio */ }) {
               whileTap={{ scale: 0.98 }}
               key={a.title}
             >
-              <NextLink href={a.url}>
-                <Box
-                  p={4} pt={a.icon ? 8 : 'auto'} position="relative" overflow="hidden"
-                  borderRadius="xl"
-                  bg={useColorModeValue('gray.100', 'bg.dark2')}
-                  cursor="pointer"
-                  zIndex={-2}
-                >
-                  {a.icon &&
-                    <Image src={a.icon} w="50%" position="absolute" top="-15%" left="-15%" opacity="15%" zIndex={-1} userSelect="none"/>
-                  }
-                  <Heading size="md" mt={2}>{a.title}</Heading>
-                  <Box fontSize="sm" mt={1}>
-                    {a.description}
+              <NextLink href={a.url} passHref>
+                <Link style={{ textDecoration: 'none' }}>
+                  <Box
+                    p={4} pt={a.icon ? 8 : 'auto'} position="relative" overflow="hidden"
+                    borderRadius="xl"
+                    bg={useColorModeValue('gray.100', 'bg.dark2')}
+                    cursor="pointer"
+                    zIndex={-2}
+                  >
+                    {a.icon &&
+                      <Image src={a.icon} w="50%" position="absolute" top="-15%" left="-15%" opacity="15%" zIndex={-1} userSelect="none"/>
+                    }
+                    <Heading size="md" mt={2}>{a.title}</Heading>
+                    <Box fontSize="sm" mt={1}>
+                      {a.description}
+                    </Box>
                   </Box>
-                </Box>
+                </Link>
               </NextLink>
             </motion.div>
           )}

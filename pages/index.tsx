@@ -30,7 +30,7 @@ import ColorModeToggle from '../components/ColorModeToggle';
 
 import Navbar from '../components/Navbar';
 
-export default function Home({ portfolio }) {
+export default function Home({ /* portfolio */ }) {
   return (
     <>
       <Head>
@@ -38,26 +38,27 @@ export default function Home({ portfolio }) {
         <meta property="og:description" content={config.description} key="ogdesc"/>
       </Head>
 
-      {/* NAVBAR */}
-      <Navbar/>
+      {/* NAVBAR
+      <Navbar/> */}
 
       {/* COLOR MODE */}
-      <Box position="fixed" top={6} right={6}>
+      <Box position="fixed" top={{ base:4, md:6 }} right={{ base:4, md:6 }}>
         <ColorModeToggle/>
       </Box>
 
       {/* HEADER */}
       <Box bg={useColorModeValue("bg.light2", "bg.dark2")}>
         <Container maxW="container.lg">
-          <Flex h={{ base:"auto", md:"40vh" }} minH={{ base:"auto", md:"300px" }} p={4} pt={{ base:12, md:"auto" }}
+          <Flex minH={{ base:"auto", md:"280px" }} p={4} pt={{ base:12, md:"auto" }}
             sx={{ gap: { base: 8, md: 0 } }}
             align="center"
+            direction={{ base:"column", xs:"row" }}
           >
             <Image
               src="/assets/linkai.png"
               borderRadius="100%"
-              w={{ base: "30%", md: "200px" }}
-              minW="80px"
+              w="20%"
+              maxW="220px" minW="100px"
             />
 
             <Box flex={1} px={{ base: 4, md: 12 }} py={{ base: 2, md: 8 }}>
@@ -65,7 +66,7 @@ export default function Home({ portfolio }) {
                 Linkai Wu
               </Heading>
 
-              <Stack direction="row" mt={2} spacing={3}>
+              <Stack direction="row" mt={{ base:2, md:3 }} spacing={3}>
                 <Tag borderRadius="full" variant="outline" fontWeight="semibold" boxShadow="0 0 0px 2px #718096">
                   <Emoji symbol="📌" mr={1}/> dmv
                 </Tag>
@@ -78,7 +79,8 @@ export default function Home({ portfolio }) {
 
               {config.bio && <Text mt={4}>{config.bio}</Text>}
 
-              <Stack direction="row" mt={4} justify={{ base:"center", md:"flex-start" }} spacing={3}>
+              {/*
+              <Stack direction="row" mt={4} spacing={3}>
                 {Object.entries(config.socials).map(([key,value]) =>
                   <Tooltip label={key} key={key}>
                     <Link href={value.href} color="text.muted" isExternal>
@@ -87,12 +89,48 @@ export default function Home({ portfolio }) {
                   </Tooltip>
                 )}
               </Stack>
+              */}
             </Box>
           </Flex>
         </Container>
       </Box>
+      
+      {/* PINNED */}
+      <Container maxW="container.lg" p={8}>
+        <Masonry
+          breakpointCols={{ default: 3, 1100: 2, 700: 1 }}
+          className="masonry-grid"
+          columnClassName="masonry-column"
+        >
+          {config.pinned.map(a =>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              key={a.title}
+            >
+              <NextLink href={a.url}>
+                <Box
+                  p={4} pt={a.icon ? 8 : 'auto'} position="relative" overflow="hidden"
+                  borderRadius="xl"
+                  bg={useColorModeValue('gray.100', 'bg.dark2')}
+                  cursor="pointer"
+                  zIndex={-2}
+                >
+                  {a.icon &&
+                    <Image src={a.icon} w="50%" position="absolute" top="-15%" left="-15%" opacity="15%" zIndex={-1} userSelect="none"/>
+                  }
+                  <Heading size="md" mt={2}>{a.title}</Heading>
+                  <Box fontSize="sm" mt={1}>
+                    {a.description}
+                  </Box>
+                </Box>
+              </NextLink>
+            </motion.div>
+          )}
+        </Masonry>
+      </Container>
 
-      {/* LINKS */}
+      {/* LINKS 
       <Container maxW="container.md" px={8} py={{ base: 8, md: 12 }}>
         <Stack spacing={4}>
           {config.links.map((e,i) => {
@@ -136,6 +174,7 @@ export default function Home({ portfolio }) {
           })}
         </Stack>
       </Container>
+      */}
 
       {/* PORTFOLIO */}
       {/*<Container maxW="container.lg" p={8}>

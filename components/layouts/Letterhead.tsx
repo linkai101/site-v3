@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-import config from '../../data/config';
+import config from '../../content/config';
 
 import {
   Box,
@@ -15,6 +15,18 @@ import {
   Avatar,
 } from '@chakra-ui/react';
 
+interface Props {
+  title: string;
+  description: string;
+  date?: string;
+  author?: {
+    name: string;
+    avatar: string;
+    url: string;
+  };
+  includeMeta?: boolean;
+}
+
 export default function Letterhead(props) {
   const {
     title,
@@ -23,7 +35,7 @@ export default function Letterhead(props) {
     author,
     includeMeta = true,
     ...rest
-  } = props;
+  }:Props = props;
 
   return (
     <>

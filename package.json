@@ -22,6 +22,12 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.2",
     "react-masonry-css": "^1.0.16",
-    "remove-markdown": "^0.3.0"
+    "remove-markdown": "^0.3.0",
+    "supercons": "^0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21",
+    "@types/react": "^17.0.39",
+    "typescript": "^4.6.2"
   }
 }

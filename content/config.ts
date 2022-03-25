@@ -9,7 +9,7 @@ export default {
     email: { glyph: "email", href: "mailto:linkai@linkaiwu.com" },
     github: { glyph: "github", href: "https://github.com/linkai101" },
     linkedin: { glyph: "profile", href: "https://www.linkedin.com/in/linkaiwu" },
-    instagram: { glyph: "instagram", href: "https://www.instagram.com/linkaiwu_" },
+    //instagram: { glyph: "instagram", href: "https://www.instagram.com/linkaiwu_" },
     youtube: { glyph: "youtube", href: "https://www.youtube.com/channel/UCZvJuvmkt1l7cfXfb87wpcA" },
   },
   pinned: [

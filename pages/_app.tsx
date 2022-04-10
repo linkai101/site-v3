@@ -15,6 +15,8 @@ function MyApp({ Component, pageProps }) {
         <title>{config.title}</title>
         <meta property="og:title" content={config.title} key="ogtitle"/>
         <meta property="og:site_name" content={config.siteName} key="ogsitename"/>
+        <meta name="description" content={config.description}/>
+        <meta property="og:description" content={config.description} key="ogdesc"/>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       

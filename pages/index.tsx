@@ -33,11 +33,6 @@ import Navbar from '../components/Navbar';
 export default function Home({ /* portfolio */ }) {
   return (
     <>
-      <Head>
-        <meta name="description" content={config.description}/>
-        <meta property="og:description" content={config.description} key="ogdesc"/>
-      </Head>
-
       {/* NAVBAR
       <Navbar/> */}
 

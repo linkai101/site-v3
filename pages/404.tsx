@@ -14,7 +14,7 @@ export default function Custom404() {
       minH="100vh"
       align="center" justify="center"
     >
-      <Box align="center">
+      <Box textAlign="center">
         <Heading size="md" fontWeight="normal">Linkai Wu</Heading>
         <Heading as="h1" size="lg">404: not found</Heading>
         <Link href="/" style={{ textDecoration: "none" }}>

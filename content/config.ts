@@ -26,6 +26,12 @@ export default {
       url: "https://wordle.linkaiwu.com/"
     },
     {
+      title: "Bongo Cat",
+      description: "Make bongo cat play instruments! This is essentially an improved version of bongo.cat. :)",
+      icon: "https://bongocat.linkaiwu.com/assets/images/favicon.png",
+      url: "https://bongocat.linkaiwu.com/"
+    },
+    {
       title:"BlairHacks",
       description: "Directed the 5th annual virtual BlairHacks in February 2022. 110+ signups from 25+ schools.",
       icon: "https://blairhacks.com/assets/logo.png",
@@ -36,11 +42,10 @@ export default {
       description: "Founded the Hack Club at Blair starting in school year 2021-22, a creative coding and STEM club.",
       icon: "https://assets.hackclub.com/flag-orpheus-top.png",
       url: "https://blair.hackclub.com"
-    }
+    },
     /*{
       title: "",
       description: "",
-      color: { light: "", dark: ""},
       icon: "",
       url: ""
     },*/

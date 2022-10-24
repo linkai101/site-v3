@@ -14,6 +14,36 @@ export default {
   },
   pinned: [
     {
+      title:"BlairHacks",
+      description: "Directed the 5th annual virtual BlairHacks in February 2022. 110+ signups from 25+ schools.",
+      icon: "https://blairhacks.com/assets/logo.png",
+      url: "https://blairhacks.com"
+    },
+    {
+      title: "BlairHacks Mini '22",
+      description: "BlairHacks' newest event (and first IRL event since 2020), an in-person day of coding and making for high-schoolers in MoCo.",
+      icon: "",
+      url: "https://mini.blairhacks.com"
+    },
+    {
+      title: "Blair Hack Club",
+      description: "Founded the Hack Club at Blair starting in school year 2021-22, a creative coding and STEM club.",
+      icon: "https://assets.hackclub.com/flag-orpheus-top.png",
+      url: "https://blair.hackclub.com"
+    },
+    {
+      title: "BHC Scrapbook",
+      description: "The Blair Hack Club scrapbook website with Discord integration, where members can post and share about the interesting things their making with code.",
+      icon: "",
+      url: "https://blair.hackclub.com/scrapbook"
+    },
+    {
+      title: "ORACLE of Blair 2022 Website",
+      description: "Designed the website and aided the coordination of the 2022 ORACLE of Blair project, a project in Fall 2022 by seniors at Montgomery Blair High School.",
+      icon: "https://polistat.mbhs.edu/favicon.png",
+      url: "https://polistat.mbhs.edu/"
+    },
+    {
       title: "Jamcave",
       description: "A realtime collaborative whiteboard app I made in October 2021.",
       icon: "https://www.pngkey.com/png/full/813-8132696_artist-palette-paint-palette-emoji.png",
@@ -30,18 +60,6 @@ export default {
       description: "Make bongo cat play instruments! This is essentially an improved version of bongo.cat. :)",
       icon: "https://bongocat.linkaiwu.com/assets/images/favicon.png",
       url: "https://bongocat.linkaiwu.com/"
-    },
-    {
-      title:"BlairHacks",
-      description: "Directed the 5th annual virtual BlairHacks in February 2022. 110+ signups from 25+ schools.",
-      icon: "https://blairhacks.com/assets/logo.png",
-      url: "https://blairhacks.com"
-    },
-    {
-      title: "Blair Hack Club",
-      description: "Founded the Hack Club at Blair starting in school year 2021-22, a creative coding and STEM club.",
-      icon: "https://assets.hackclub.com/flag-orpheus-top.png",
-      url: "https://blair.hackclub.com"
     },
     /*{
       title: "",
